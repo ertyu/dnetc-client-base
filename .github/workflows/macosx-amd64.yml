@@ -7,11 +7,14 @@ on:
   pull_request:
     branches: [ master ]
 
+env:
+  if: endsWith(github.repository, '-private')
+  work-path: public
+
 defaults:
   run:
-    if: endsWith(github.repository, '-private')
-    working-directory: public
-
+    working-directory: work-path
+    
 jobs:
   build:
 
@@ -21,7 +24,7 @@ jobs:
     - name: Check out repository code
       uses: actions/checkout@v2
     - name: Install dependencies
-      working-directory: .
+      #working-directory: .
       run: brew install yasm wget
     - name: Install ispc
       working-directory: /tmp
