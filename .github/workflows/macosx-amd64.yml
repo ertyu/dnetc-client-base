@@ -16,6 +16,8 @@ jobs:
     # set the working directory for the private repo
     - working-directory: public
       if: endsWith(github.repository, '-base')
+      env: 
+        SHELL: /bin/sh
       run: ls
       
     - name: Check out repository code
