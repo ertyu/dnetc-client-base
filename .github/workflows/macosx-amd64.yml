@@ -6,14 +6,6 @@ on:
     branches: [ master ]
   pull_request:
     branches: [ master ]
-
-env:
-  if: endsWith(github.repository, '-private')
-  work-path: public
-
-defaults:
-  run:
-    working-directory: work-path
     
 jobs:
   build:
@@ -21,6 +13,13 @@ jobs:
     runs-on: macos-latest
 
     steps:
+    - name: public repo
+      env:
+        work-dir: .
+    - name: check private repo
+      if: endsWith(github.repository, '-private')
+      env:
+        work-dir: public
     - name: Check out repository code
       uses: actions/checkout@v2
     - name: Install dependencies
@@ -30,7 +29,7 @@ jobs:
       working-directory: /tmp
       run: wget https://github.com/ispc/ispc/releases/download/v1.15.0/ispc-v1.15.0-macOS.tar.gz && tar xvzf ispc-v1.15.0-macOS.tar.gz && install ispc-v1.15.0-macOS/bin/ispc /usr/local/bin
     - name: configure
-      #working-directory: public
+      working-directory: work-dir
       #if: endsWith(github.repository, '-private')
       env: 
         SHELL: /bin/sh
