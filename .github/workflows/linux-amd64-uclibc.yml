@@ -23,7 +23,7 @@ jobs:
       working-directory: /tmp
       run: wget https://toolchains.bootlin.com/downloads/releases/toolchains/x86-64-core-i7/tarballs/x86-64-core-i7--uclibc--stable-2020.08-1.tar.bz2 && tar xvjf x86-64-core-i7--uclibc--stable-2020.08-1.tar.bz2
     - name: configure
-      working-directory: public
+      #working-directory: public
       env: 
         SHELL: /bin/sh
       run: ./configure linux-amd64-uclibc
