@@ -1,0 +1,47 @@
+  
+name: macosx-amd64 CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: macos-latest
+
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo brew install yasm wget
+    - name: Install ispc
+      working-directory: /tmp
+      run: wget https://github.com/ispc/ispc/releases/download/v1.15.0/ispc-v1.15.0-macOS.tar.gz && tar xvzf ispc-v1.15.0-macOS.tar.gz && sudo install ispc-v1.15.0-macOS/bin/ispc /usr/bin/
+    - name: configure
+      #working-directory: public
+      env: 
+        SHELL: /bin/sh
+      run: ./configure macosx-amd64
+    - name: make
+      #working-directory: public
+      run: make
+    - name: test
+      #working-directory: public
+      run: ./dnetc -test
+    - name: cpuinfo
+      #working-directory: public
+      run: ./dnetc -cpuinfo      
+#    - name: bench
+#      #working-directory: public
+#      run: ./dnetc -bench
+#    - name: stress
+#      #working-directory: public
+#      run: ./dnetc -stress
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        #path: public/dnetc*.tar.gz
+        path: dnetc*.tar.gz
