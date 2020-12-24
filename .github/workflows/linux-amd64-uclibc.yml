@@ -28,19 +28,19 @@ jobs:
         SHELL: /bin/sh
       run: ./configure linux-amd64-uclibc
     - name: make
-      working-directory: public
+      #working-directory: public
       run: make
     - name: test
-      working-directory: public
+      #working-directory: public
       run: ./dnetc -test
     - name: cpuinfo
-      working-directory: public
+      #working-directory: public
       run: ./dnetc -cpuinfo      
 #    - name: bench
-#      working-directory: public
+#      #working-directory: public
 #      run: ./dnetc -bench
 #    - name: stress
-#      working-directory: public
+#      #working-directory: public
 #      run: ./dnetc -stress
     - uses: actions/upload-artifact@v2
       with:
