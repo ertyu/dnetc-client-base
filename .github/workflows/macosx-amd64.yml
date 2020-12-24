@@ -13,13 +13,16 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - name: public repo
+    - name: check public repo
+      if: endsWith(github.repository, '-base')
       env:
         work-dir: .
+      run: echo public
     - name: check private repo
       if: endsWith(github.repository, '-private')
       env:
         work-dir: public
+      run: echo private
     - name: Check out repository code
       uses: actions/checkout@v2
     - name: Install dependencies
