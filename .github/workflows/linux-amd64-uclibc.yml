@@ -1,0 +1,48 @@
+name: linux-amd64-uclibc CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      run: sudo apt-get install yasm wget
+    - name: Install ispc
+      working-directory: /tmp
+      run: wget https://github.com/ispc/ispc/releases/download/v1.15.0/ispc-v1.15.0-linux.tar.gz && tar xvzf ispc-v1.15.0-linux.tar.gz && sudo install ispc-v1.15.0-linux/bin/ispc /usr/bin/
+    - name: Install uclibc toolchain
+      working-directory: /tmp
+      run: wget https://toolchains.bootlin.com/downloads/releases/toolchains/x86-64-core-i7/tarballs/x86-64-core-i7--uclibc--stable-2020.08-1.tar.bz2 && tar xvjf x86-64-core-i7--uclibc--stable-2020.08-1.tar.bz2
+    - name: configure
+      working-directory: public
+      env: 
+        SHELL: /bin/sh
+      run: ./configure linux-amd64-uclibc
+    - name: make
+      working-directory: public
+      run: make
+    - name: test
+      working-directory: public
+      run: ./dnetc -test
+    - name: cpuinfo
+      working-directory: public
+      run: ./dnetc -cpuinfo      
+#    - name: bench
+#      working-directory: public
+#      run: ./dnetc -bench
+#    - name: stress
+#      working-directory: public
+#      run: ./dnetc -stress
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-artifact
+        path: public/dnetc*.tar.gz
