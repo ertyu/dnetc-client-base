@@ -9,6 +9,7 @@ on:
 
 defaults:
   run:
+    if: endsWith(github.repository, '-private')
     working-directory: public
 
 jobs:
