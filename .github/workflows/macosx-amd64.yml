@@ -13,8 +13,9 @@ jobs:
     runs-on: macos-latest
 
     steps:
+    # set the working directory for the private repo
     - working-directory: public
-      if: endsWith(github.repository, '-private')
+      if: endsWith(github.repository, '-base')
       run: echo private
       
     - name: Check out repository code
@@ -26,8 +27,7 @@ jobs:
       working-directory: /tmp
       run: wget https://github.com/ispc/ispc/releases/download/v1.15.0/ispc-v1.15.0-macOS.tar.gz && tar xvzf ispc-v1.15.0-macOS.tar.gz && install ispc-v1.15.0-macOS/bin/ispc /usr/local/bin
     - name: configure
-      #working-directory: .
-      #if: endsWith(github.repository, '-private')
+      #working-directory: public
       env: 
         SHELL: /bin/sh
       run: ./configure macosx-amd64
@@ -46,8 +46,15 @@ jobs:
 #    - name: stress
 #      #working-directory: public
 #      run: ./dnetc -stress
+
     - uses: actions/upload-artifact@v2
+      if: endsWith(github.repository, '-base')
       with:
         name: my-artifact
         #path: public/dnetc*.tar.gz
         path: dnetc
+    - uses: actions/upload-artifact@v2
+      if: endsWith(github.repository, '-private')
+      with:
+        name: my-artifact
+        path: public/dnetc*.tar.gz
