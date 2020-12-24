@@ -31,9 +31,9 @@ jobs:
     - name: test
       #working-directory: public
       run: ./dnetc -test
-    - name: cpuinfo
-      #working-directory: public
-      run: ./dnetc -cpuinfo      
+#    - name: cpuinfo
+#      #working-directory: public
+#      run: ./dnetc -cpuinfo      
 #    - name: bench
 #      #working-directory: public
 #      run: ./dnetc -bench
