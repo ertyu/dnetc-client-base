@@ -16,7 +16,7 @@ jobs:
     - name: Check out repository code
       uses: actions/checkout@v2
     - name: Install dependencies
-      run: sudo brew install yasm wget
+      run: brew install yasm wget
     - name: Install ispc
       working-directory: /tmp
       run: wget https://github.com/ispc/ispc/releases/download/v1.15.0/ispc-v1.15.0-macOS.tar.gz && tar xvzf ispc-v1.15.0-macOS.tar.gz && sudo install ispc-v1.15.0-macOS/bin/ispc /usr/bin/
