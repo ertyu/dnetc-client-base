@@ -3071,7 +3071,7 @@ case "$1" in
         TARGET_CCFLAGS="$OPTS_CLANGCC_64 -DHAVE_POSIX_THREADS $TARGET_plat"
         TARGET_LIBS="-framework IOKit -framework CoreFoundation"
         TARGET_LDFLAGS="$TARGET_plat"
-        TARGET_NASM="/opt/local/bin/yasm"
+        TARGET_NASM="yasm"
         TARGET_NASM_FMT="macho64"
         TARGET_DOCFILES="docs/readme._ix"   #platform specific docfile
         TARGET_TARBALL="macosx-amd64"
