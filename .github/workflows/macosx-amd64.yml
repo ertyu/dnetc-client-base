@@ -13,26 +13,19 @@ jobs:
     runs-on: macos-latest
 
     steps:
-    - name: check public repo
-      if: endsWith(github.repository, '-base')
-      env:
-        work-dir: .
-      run: echo public
-    - name: check private repo
+    - working-directory: public
       if: endsWith(github.repository, '-private')
-      env:
-        work-dir: public
-      run: echo private
+      
     - name: Check out repository code
       uses: actions/checkout@v2
     - name: Install dependencies
-      #working-directory: .
+      working-directory: .
       run: brew install yasm wget
     - name: Install ispc
       working-directory: /tmp
       run: wget https://github.com/ispc/ispc/releases/download/v1.15.0/ispc-v1.15.0-macOS.tar.gz && tar xvzf ispc-v1.15.0-macOS.tar.gz && install ispc-v1.15.0-macOS/bin/ispc /usr/local/bin
     - name: configure
-      working-directory: .
+      #working-directory: .
       #if: endsWith(github.repository, '-private')
       env: 
         SHELL: /bin/sh
