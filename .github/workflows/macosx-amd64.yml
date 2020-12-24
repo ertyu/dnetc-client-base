@@ -32,7 +32,7 @@ jobs:
       working-directory: /tmp
       run: wget https://github.com/ispc/ispc/releases/download/v1.15.0/ispc-v1.15.0-macOS.tar.gz && tar xvzf ispc-v1.15.0-macOS.tar.gz && install ispc-v1.15.0-macOS/bin/ispc /usr/local/bin
     - name: configure
-      working-directory: work-dir
+      working-directory: .
       #if: endsWith(github.repository, '-private')
       env: 
         SHELL: /bin/sh
