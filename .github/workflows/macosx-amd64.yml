@@ -15,6 +15,7 @@ jobs:
     steps:
     - working-directory: public
       if: endsWith(github.repository, '-private')
+      run: echo private
       
     - name: Check out repository code
       uses: actions/checkout@v2
