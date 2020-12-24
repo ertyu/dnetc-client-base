@@ -16,9 +16,7 @@ jobs:
     # set the working directory for the private repo
     - working-directory: common
       if: endsWith(github.repository, '-base')
-      env: 
-        SHELL: /bin/sh
-      run: ls
+      run: ./configure --list
       
     - name: Check out repository code
       uses: actions/checkout@v2
