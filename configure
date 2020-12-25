@@ -3020,7 +3020,7 @@ case "$1" in
         ### and set the path/prefix accordingly below
         # things that'll break cross-compile commented out
         # put toolchain prefix here
-        cross_prefix="/tmp/x86-64-core-i7--uclibc--stable-2020.08-1/bin/x86_64-linux-"
+        cross_prefix="x86_64-linux-"
         TARGET_IS_CROSSCOMPILE=1
 #       infer_arch_and_version "Linux"
         TARGET_NASM="yasm"
