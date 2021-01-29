@@ -1662,7 +1662,21 @@ case "$1" in
         TARGET_LIBS="-llog"
         TARGET_DOCFILES="docs/readme._ix"   #platform specific docfile
         TARGET_TARBALL="android-arm32"
-        add_sources "linux" "arm" "elf"	
+        add_sources "linux" "arm"
+        ;;
+	
+    *android-arm64*)       # [ertyu]
+        TARGET_IS_CROSSCOMPILE=1
+        TARGET_AS="aarch64-linux-android-as"
+        TARGET_CC="aarch64-linux-android30-clang"
+        TARGET_STRIP="aarch64-linux-android-strip"
+	#generate_gcc_opts "arm" "eabi" #?
+	TARGET_CCFLAGS="-DANDROID  -DDECLARE_TIMEZONE -Wall -O3 -fomit-frame-pointer -fPIE"
+        TARGET_LDFLAGS="$TARGET_LDFLAGS -static"
+        TARGET_LIBS="-llog"
+        TARGET_DOCFILES="docs/readme._ix"   #platform specific docfile
+        TARGET_TARBALL="android-arm64"
+        add_sources "linux" "arm64"	
         ;;
 
     *android-x86)               # [yoyo mikereed]
