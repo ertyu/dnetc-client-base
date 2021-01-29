@@ -1650,6 +1650,20 @@ case "$1" in
         TARGET_STRIP="arm-linux-androideabi-strip"
         add_sources "linux" "arm" "elf"
         ;;
+	
+    *andriod-arm32*)       # [ertyu]
+        TARGET_IS_CROSSCOMPILE=1
+        TARGET_AS="arm-linux-androideabi-as"
+        TARGET_CC="armv7a-linux-androideabi30-clang"
+        TARGET_STRIP="arm-linux-androideabi-strip"
+	#generate_gcc_opts "arm" "eabi" #?
+	TARGET_CCFLAGS="-DANDROID  -DDECLARE_TIMEZONE -Wall -O3 -fomit-frame-pointer -fPIE"
+        TARGET_LDFLAGS="$TARGET_LDFLAGS -static"
+        TARGET_LIBS="-llog"
+        TARGET_DOCFILES="docs/readme._ix"   #platform specific docfile
+        TARGET_TARBALL="android-arm32"
+        add_sources "linux" "arm" "elf"	
+        ;;
 
     *android-x86)               # [yoyo mikereed]
         TARGET_CC="i686-linux-android-gcc"
