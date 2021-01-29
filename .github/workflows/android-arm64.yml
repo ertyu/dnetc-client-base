@@ -1,0 +1,58 @@
+name: android-arm64 CI
+
+# to use with public source
+# comment out all 'working-directory: public'
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    timeout-minutes: 20
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out repository code
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      #run: sudo apt-get install yasm wget
+      run: sudo apt-get install wget
+    - name: Install uclibc toolchain
+      working-directory: /tmp
+      run: |
+        wget https://dl.google.com/android/repository/android-ndk-r22-linux-x86_64.zip
+        unzip android-ndk-r22-linux-x86_64.zip
+        #export "NDK=/tmp/android-ndk-22"
+        #echo "/tmp/x86-64-core-i7--uclibc--stable-2020.08-1/bin" >> $GITHUB_PATH
+        echo "/tmp/android-ndk-r22/toolchains/llvm/prebuilt/linux-x86_64/bin" >> $GITHUB_PATH
+    - name: configure
+      #working-directory: public
+      env: 
+        SHELL: /bin/sh
+      run: ./configure android-arm64
+    - name: make
+      #working-directory: public
+      run: make
+    #- name: test
+    #  #working-directory: public
+    #  run: ./dnetc -test
+#    - name: bench
+#      working-directory: public
+#      run: ./dnetc -bench
+#    - name: stress
+#      working-directory: public
+#      run: ./dnetc -stress
+    - uses: actions/upload-artifact@v2
+      if: endsWith(github.repository, '-base')
+      with:
+        name: my-artifact
+        path: dnetc
+    - uses: actions/upload-artifact@v2
+      if: endsWith(github.repository, '-private')
+      with:
+        name: my-artifact
+        path: public/dnetc*.tar.gz
