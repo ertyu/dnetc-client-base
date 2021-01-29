@@ -1651,7 +1651,7 @@ case "$1" in
         add_sources "linux" "arm" "elf"
         ;;
 	
-    *andriod-arm32*)       # [ertyu]
+    *android-arm32*)       # [ertyu]
         TARGET_IS_CROSSCOMPILE=1
         TARGET_AS="arm-linux-androideabi-as"
         TARGET_CC="armv7a-linux-androideabi30-clang"
