@@ -1671,7 +1671,7 @@ case "$1" in
         TARGET_CC="aarch64-linux-android30-clang"
         TARGET_STRIP="aarch64-linux-android-strip"
 	#generate_gcc_opts "arm" "eabi" #?
-	TARGET_CCFLAGS="-DANDROID -HAVE_POSIX_THREADS -DDECLARE_TIMEZONE -Wall -O3 -fomit-frame-pointer -fPIE"
+	TARGET_CCFLAGS="-DANDROID -DHAVE_POSIX_THREADS -DDECLARE_TIMEZONE -Wall -O3 -fomit-frame-pointer -fPIE"
         TARGET_LDFLAGS="$TARGET_LDFLAGS -static"
         TARGET_LIBS="-llog"
         TARGET_DOCFILES="docs/readme._ix"   #platform specific docfile
