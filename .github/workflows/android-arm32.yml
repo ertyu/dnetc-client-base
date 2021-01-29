@@ -28,7 +28,7 @@ jobs:
         unzip android-ndk-r22-linux-x86_64.zip
         #export "NDK=/tmp/android-ndk-22"
         #echo "/tmp/x86-64-core-i7--uclibc--stable-2020.08-1/bin" >> $GITHUB_PATH
-        echo "/tmp/android-ndk-22/toolchains/llvm/prebuilt/linux-x86_64/bin" >> $GITHUB_PATH
+        echo "/tmp/android-ndk-r22/toolchains/llvm/prebuilt/linux-x86_64/bin" >> $GITHUB_PATH
     - name: configure
       #working-directory: public
       env: 
