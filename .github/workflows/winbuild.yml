@@ -76,6 +76,7 @@ jobs:
         cd %GITHUB_WORKSPACE%\public
         nmake -f makefile.vc superclean
         del dnetc*.zip
+        yasm --version
         nmake -f makefile.vc makezip
 
     - name: Test dnetc (64-bit)
