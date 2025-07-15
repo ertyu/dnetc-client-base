@@ -76,7 +76,6 @@ jobs:
         cd %GITHUB_WORKSPACE%\public
         nmake -f makefile.vc superclean
         del dnetc*.zip
-        yasmw -a x86 -m amd64 -o output\x86cpuid.obj -f win32 -D _WINDOWS plat\AMD64\x86cpuid.asm
         nmake -f makefile.vc makezip
 
     - name: Test dnetc (64-bit)
