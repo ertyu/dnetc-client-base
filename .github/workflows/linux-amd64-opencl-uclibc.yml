@@ -33,15 +33,15 @@ jobs:
         tar xvjf x86-64-core-i7--uclibc--stable-2020.08-1.tar.bz2
         echo "/tmp/x86-64-core-i7--uclibc--stable-2020.08-1/bin" >> $GITHUB_PATH
     - name: configure
-      working-directory: public
+      #working-directory: public
       env: 
         SHELL: /bin/sh
       run: ./configure linux-amd64-opencl-uclibc
     - name: make
-      working-directory: public
+      #working-directory: public
       run: make
     - name: test
-      working-directory: public
+      #working-directory: public
       run: ./dnetc -test
 #    - name: bench
 #      working-directory: public
@@ -50,7 +50,7 @@ jobs:
 #      working-directory: public
 #      run: ./dnetc -stress
     - name: cpuinfo
-      working-directory: public
+      #working-directory: public
       run: ./dnetc -cpuinfo
     - uses: actions/upload-artifact@v4
       if: endsWith(github.repository, '-base')
