@@ -3525,6 +3525,32 @@ case "$1" in
         add_sources "linux" "opencl"
         ;;
 
+    *linux-amd64-opencl-uclibc*)       # using uClibc [ertyu]
+        ### From https://toolchains.bootlin.com
+        ### download x86_64 uclibc stable
+        ### and set the path/prefix accordingly below
+        # things that'll break cross-compile commented out
+        # put toolchain prefix here
+        cross_prefix="x86_64-linux-"
+        TARGET_IS_CROSSCOMPILE=1
+#       infer_arch_and_version "Linux"
+        TARGET_NASM="yasm"
+        TARGET_NASM_FMT="elf64"
+        TARGET_AS="${cross_prefix}gcc -c"
+        TARGET_CC="${cross_prefix}gcc"
+        TARGET_STRIP="${cross_prefix}strip"
+#       generate_gcc_opts "${inferred_arch}" "linux"
+        generate_gcc_opts "amd64" "linux"
+        TARGET_CCFLAGS="$OPTS_GCC"
+        TARGET_LDFLAGS="$TARGET_LDFLAGS -DOPENCL -DDYN_TIMESLICE -static"
+        TARGET_LIBS="-lrt -lOpenCL -lpthread"
+#       TARGET_TARBALL="linux-${inferred_arch}-${TARGET_NASM_FMT}-opencl-uclibc"
+        TARGET_TARBALL="linux-amd64-opencl-uclibc"
+        TARGET_DOCFILES="docs/readme.linux docs/readme.uclib docs/readme.opencl"   #platform specific docfile
+        TARGET_USES_GNUMAKE="yes"
+        add_sources "uclibc" "opencl"
+        ;;	
+
     *macosx-amd64-opencl)       # [zebe] Mac OS X 10.7+ 64-bit, Darwin (Xcode >= 5 recommended)
         TARGET_plat="-mmacosx-version-min=10.7 -DMACOSX_DEPLOYMENT_TARGET=10.7 -arch x86_64"
         TARGET_CCFLAGS="$OPTS_CLANGCC_64 -DOPENCL -DDYN_TIMESLICE $TARGET_plat"
