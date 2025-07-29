@@ -36,6 +36,7 @@ jobs:
         tar xvjf x86-64-core-i7--uclibc--stable-2020.08-1.tar.bz2
         echo "/tmp/x86-64-core-i7--uclibc--stable-2020.08-1/bin" >> $GITHUB_PATH
     - name: check
+      run: |
         ls /usr/include/ > /tmp/out
         echo /tmp/out
         ls /usr/include/CL/ /tmp/out
