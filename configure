@@ -3541,7 +3541,7 @@ case "$1" in
         TARGET_STRIP="${cross_prefix}strip"
 #       generate_gcc_opts "${inferred_arch}" "linux"
         generate_gcc_opts "amd64" "linux"
-        TARGET_CCFLAGS="$OPTS_GCC -DOPENCL -DDYN_TIMESLICE"
+        TARGET_CCFLAGS="$OPTS_GCC -DOPENCL -DDYN_TIMESLICE -I/usr/include"
         TARGET_LDFLAGS="$TARGET_LDFLAGS -static"
         TARGET_LIBS="-lrt -lOpenCL -lpthread"
 #       TARGET_TARBALL="linux-${inferred_arch}-${TARGET_NASM_FMT}-opencl-uclibc"
