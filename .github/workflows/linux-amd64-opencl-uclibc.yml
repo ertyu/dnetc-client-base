@@ -41,7 +41,7 @@ jobs:
         echo /tmp/out
         ls /usr/include/CL/ /tmp/out
         echo /tmp/out
-        echo | gcc -E -Wp,-v -
+        echo | x86_64-linux-gcc -E -Wp,-v -
     - name: configure
       #working-directory: public
       env: 
