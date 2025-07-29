@@ -35,6 +35,8 @@ jobs:
         wget https://toolchains.bootlin.com/downloads/releases/toolchains/x86-64-core-i7/tarballs/x86-64-core-i7--uclibc--stable-2020.08-1.tar.bz2
         tar xvjf x86-64-core-i7--uclibc--stable-2020.08-1.tar.bz2
         echo "/tmp/x86-64-core-i7--uclibc--stable-2020.08-1/bin" >> $GITHUB_PATH
+        ls /usr/include/
+        ls /usr/include/CL/
     - name: configure
       #working-directory: public
       env: 
