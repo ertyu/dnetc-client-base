@@ -19,7 +19,10 @@ jobs:
     - name: Check out repository code
       uses: actions/checkout@v4
     - name: Install dependencies
-      run: sudo apt-get install yasm wget
+      #run: sudo apt-get install yasm wget
+      run: sudo apt-get install wget
+    - name: Install opencl
+      run: sudo apt-get install opencl-headers ocl-icd-libopencl1
 #    - name: Install ispc
 #      working-directory: /tmp
 #      run: |
