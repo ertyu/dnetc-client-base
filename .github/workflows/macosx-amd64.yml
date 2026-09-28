@@ -15,7 +15,7 @@ jobs:
 
     steps:
     - name: Check out repository code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v7
     - name: Install dependencies
       #working-directory: .
       run: brew install yasm wget
@@ -35,7 +35,7 @@ jobs:
       run: ./configure macosx-amd64
     - name: test
       run: as -arch arm64 -x assembler-with-cpp -E rc5-72/arm64/r72-ks-scalarfusion.S
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       with:
         name: my-test
         path: a.out
@@ -55,12 +55,12 @@ jobs:
 #      #working-directory: public
 #      run: ./dnetc -stress
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       if: endsWith(github.repository, '-base')
       with:
         name: my-artifact
         path: dnetc
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v7
       if: endsWith(github.repository, '-private')
       with:
         name: my-artifact
