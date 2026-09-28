@@ -33,6 +33,12 @@ jobs:
       env: 
         SHELL: /bin/sh
       run: ./configure macosx-amd64
+    - name: test
+      run: as -arch arm64 -x assembler-with-cpp -E rc5-72/arm64/r72-ks-scalarfusion.S
+    - uses: actions/upload-artifact@v2
+      with:
+        name: my-test
+        path: a.out
     - name: make
       #working-directory: public
       run: make
