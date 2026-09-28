@@ -38,7 +38,7 @@ jobs:
     - uses: actions/upload-artifact@v7
       with:
         name: my-test
-        path: a.out
+        path: rc5-72/arm64/a.out
     - name: make
       #working-directory: public
       run: make
