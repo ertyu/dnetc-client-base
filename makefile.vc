@@ -187,7 +187,11 @@ OPTS_MSVC = $(OPTS_MSVC) -I$(CUDA_INC_PATH)
 OPTS_LIBS = $(OPTS_LIBS) version.lib $(CUDA_LIB_PATH)\cudart.lib
 ZIPEXTRAS = $(ZIPEXTRAS) docs\readme.cuda plat\cuda\cudatoolkit_eula.txt
 
-!if ( [cmd /c plat\win\cudaver.cmd] == 3010 )
+!if ( [cmd /c plat\win\cudaver.cmd] == 11020 )
+ZIPSUFFIX = win32-x86-cuda112
+OPTS_MSVC = $(OPTS_MSVC) -DEXPECTED_CUDA_VERSION=11020
+#ZIPEXTRAS = $(ZIPEXTRAS) $(CUDA_BIN_PATH)\cudart32_31_9.dll
+!elseif ( [cmd /c plat\win\cudaver.cmd] == 3010 )
 ZIPSUFFIX = win32-x86-cuda31
 OPTS_MSVC = $(OPTS_MSVC) -DEXPECTED_CUDA_VERSION=3010
 ZIPEXTRAS = $(ZIPEXTRAS) $(CUDA_BIN_PATH)\cudart32_31_9.dll
