@@ -13,7 +13,10 @@ for /f "tokens=3 usebackq" %%i in (`findstr CUDA_VERSION %CUDA_INC_PATH%\cuda.h`
 )
 if "%cudaversion%"=="" goto notfound
 echo cudaversion=%cudaversion%
+echo "found"
+echo %cudaversion%
 exit %cudaversion%
 
 :notfound
+echo "not found"
 exit 0
