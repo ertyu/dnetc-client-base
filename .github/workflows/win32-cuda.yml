@@ -28,8 +28,8 @@ jobs:
       with:
         cuda: '11.2.2'
         
-    - name: run cudaver
-    - run: |
+    - name: cudaver
+      run: |
         echo "Installed cuda version is: ${{steps.cuda-toolkit.outputs.cuda}}"
         nvcc -V
         plat\win\cudaver.cmd
