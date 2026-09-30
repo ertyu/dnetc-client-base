@@ -4314,8 +4314,10 @@ if [ -n "${TARGET_SRCOBJLIST}" ]; then
         CUDA_CODEGEN="--generate-code arch=compute_10,code=compute_10"
       elif [ $cudaver -lt 700 ]; then
         CUDA_CODEGEN="--generate-code arch=compute_11,code=compute_11"
+      elif [ $cudaver -lt 1120 ]; then
+	    CUDA_CODEGEN="--generate-code arch=compute_20,code=compute_20 --generate-code arch=compute_30,code=compute_30 --generate-code arch=compute_35,code=compute_35"
       fi
-      CUDA_CODEGEN="$CUDA_CODEGEN --generate-code arch=compute_20,code=compute_20 --generate-code arch=compute_30,code=compute_30 --generate-code arch=compute_35,code=compute_35 --generate-code arch=compute_50,code=compute_50"
+      CUDA_CODEGEN="$CUDA_CODEGEN --generate-code arch=compute_50,code=compute_50 --generate-code arch=compute_60,code=compute_60 --generate-code arch=compute_70,code=compute_70"
       echo "	\${NVCC} -c $CUDA_CODEGEN --compiler-options \"\${NVCCFLAGS}\" ${TARGETSRC} -o $target" >> Makefile
       echo "" >> Makefile
       TARGETSRC=""
