@@ -17,17 +17,15 @@ jobs:
 
     steps:
     - name: Check out repository code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v7
     - name: Install dependencies
-      #run: sudo apt-get install yasm wget
       run: sudo apt-get install wget
-    - name: Install uclibc toolchain
+    - name: Install android ndk
       working-directory: /tmp
       run: |
         wget https://dl.google.com/android/repository/android-ndk-r22-linux-x86_64.zip
         unzip android-ndk-r22-linux-x86_64.zip
         #export "NDK=/tmp/android-ndk-22"
-        #echo "/tmp/x86-64-core-i7--uclibc--stable-2020.08-1/bin" >> $GITHUB_PATH
         echo "/tmp/android-ndk-r22/toolchains/llvm/prebuilt/linux-x86_64/bin" >> $GITHUB_PATH
     - name: configure
       #working-directory: public
@@ -46,12 +44,12 @@ jobs:
 #    - name: stress
 #      working-directory: public
 #      run: ./dnetc -stress
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v7
       if: endsWith(github.repository, '-base')
       with:
         name: my-artifact
         path: dnetc
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v7
       if: endsWith(github.repository, '-private')
       with:
         name: my-artifact
