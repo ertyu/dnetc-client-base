@@ -610,7 +610,6 @@ rc5_72_unit_func_avx2:
     mov     eax, RESULT_NOTHING
 
 .finished:
-    vzeroupper
 
 %ifdef _WINDOWS
     vmovdqa xmm6, [save_xmm6]
