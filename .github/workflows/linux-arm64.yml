@@ -1,4 +1,4 @@
-name: Linux amd64 CI
+name: Linux arm64 CI
 
 on:
   push:
@@ -34,4 +34,6 @@ jobs:
       run: ./dnetc -cpuinfo
     - name: bench
       run: ./dnetc -bench
+    - name: cpu
+      run: cat /proc/cpuinfo
       
