@@ -34,4 +34,6 @@ jobs:
       run: ./dnetc -cpuinfo
     - name: bench
       run: ./dnetc -bench
+    - name: cpu
+      run: lscpu
       
