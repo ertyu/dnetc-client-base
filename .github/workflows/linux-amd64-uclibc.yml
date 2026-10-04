@@ -13,7 +13,7 @@ jobs:
 
     steps:
     - name: Check out repository code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v7
     - name: Install dependencies
       run: sudo apt-get install yasm wget
     - name: Install ispc
@@ -48,7 +48,7 @@ jobs:
 #    - name: stress
 #      #working-directory: public
 #      run: ./dnetc -stress
-    - uses: actions/upload-artifact@v2
+    - uses: actions/upload-artifact@v7
       with:
         name: my-artifact
         #path: public/dnetc*.tar.gz
