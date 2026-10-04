@@ -1084,7 +1084,8 @@ int smtp_append_message( void *msghandle, const char *txt )
       unsigned long txtlen = (unsigned long)strlen( txt );
       if (txtlen > 0)
       {
-        register char *p;
+        //register char *p;
+        char *p;
         unsigned long maxsize;
         
         #if defined(MAILSPOOL_IS_STATICBUFFER)
