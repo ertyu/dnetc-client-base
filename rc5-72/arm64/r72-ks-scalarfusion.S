@@ -104,8 +104,8 @@ scalarFusionEntry:
   ror w2, w2, w1
 
   #define ROTL_BLOCK_J1(regElement, prevElement) \
-    add regElement, regElement, prevElement %% \
-    add regElement, regElement, w2 ! \
+    add regElement, regElement, prevElement; \
+    add regElement, regElement, w2; \
     ror regElement, regElement, #29; \
     add w3, w3, regElement; \
     add w3, w3, w2; \
