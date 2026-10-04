@@ -1704,7 +1704,7 @@ case "$1" in
         TARGET_CC="clang"
         TARGET_AS="clang"
         #TARGET_CCFLAGS="$OPTS_GCC -Wall -DHAVE_POSIX_THREADS"
-        TARGET_CCFLAGS="$OPTS_CLANGCC -DHAVE_POSIX_THREADS 
+        TARGET_CCFLAGS="$OPTS_CLANGCC -DHAVE_POSIX_THREADS"
         TARGET_LIBS="-lpthread -lrt"
         TARGET_TARBALL="linux-arm64"
         TARGET_DOCFILES="docs/readme._ix"
