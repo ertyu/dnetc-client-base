@@ -634,6 +634,8 @@ rc5_72_unit_func_avx2:
 
     add     rsp, work_size
 
+    vzeroupper
+
     ret
 
 [SECTION .rodata]
