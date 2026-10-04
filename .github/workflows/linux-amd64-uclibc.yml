@@ -39,12 +39,13 @@ jobs:
     - name: test
       #working-directory: public
       run: ./dnetc -test
-#    - name: cpuinfo
-#      #working-directory: public
-#      run: ./dnetc -cpuinfo      
-#    - name: bench
-#      #working-directory: public
+    - name: cpuinfo
+      #working-directory: public
+      run: ./dnetc -cpuinfo      
+    - name: bench
+      #working-directory: public
 #      run: ./dnetc -bench
+      run: ./dnetc -bench rc5-72 4
 #    - name: stress
 #      #working-directory: public
 #      run: ./dnetc -stress
