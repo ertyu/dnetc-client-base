@@ -1005,7 +1005,8 @@ int smtp_append_message( void *msghandle, const char *txt )
           msg->spoolbuff = mfopen( "mail spool", "w+b" );
         if (msg->spoolbuff != NULL)
         {
-          register char *p;
+          //register char *p;
+          char *p;
           unsigned long maxsize = msg->maxspoolsize;
           unsigned long msglen = mfilelength( mfileno( msg->spoolbuff ) );
           if ((txtlen + 2) > maxsize)
