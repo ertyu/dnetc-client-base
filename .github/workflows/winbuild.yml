@@ -33,9 +33,11 @@ jobs:
     # Install NASM
     - name: Install NASM
       run: |
-        powershell Invoke-WebRequest -Uri https://www.nasm.us/pub/nasm/releasebuilds/2.15.03/win64/nasm-2.15.03-win64.zip -OutFile nasm-2.15.03-win64.zip
-        powershell Expand-Archive -LiteralPath nasm-2.15.03-win64.zip -DestinationPath C:\nasm
-        move C:\nasm\nasm-2.15.03 C:\nasm\bin
+        #powershell Invoke-WebRequest -Uri https://www.nasm.us/pub/nasm/releasebuilds/2.15.03/win64/nasm-2.15.03-win64.zip -OutFile nasm-2.15.03-win64.zip
+        #powershell Expand-Archive -LiteralPath nasm-2.15.03-win64.zip -DestinationPath C:\nasm
+        powershell Invoke-WebRequest -Uri https://www.nasm.us/pub/nasm/releasebuilds/3.02/win64/nasm-3.02-win64.zip -OutFile nasm-3.02-win64.zip
+        powershell Expand-Archive -LiteralPath nasm-3.02-win64.zip -DestinationPath C:\nasm
+        move C:\nasm\nasm-3.02 C:\nasm\bin
         
     # Install Infozip
     - name: Install Infozip
@@ -91,7 +93,7 @@ jobs:
         cd %GITHUB_WORKSPACE%\public
         dnetc.com -test
 
-    - uses: actions/upload-artifact@v6
-      with:
-        name: dnetc-artifact-win64
-        path: public/dnetc*-win*.zip
+ #   - uses: actions/upload-artifact@v6
+ #     with:
+ #       name: dnetc-artifact-win64
+ #       path: public/dnetc*-win*.zip
