@@ -10,12 +10,12 @@ jobs:
   build:
     timeout-minutes: 20
 
-    runs-on: windows-2025
+    runs-on: windows-2025-vs2026
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     - name: Check out repository code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v6
       
     # Install ISPC (Intel Implicit SPMD Program Compiler)
     - name: Install ISPC
@@ -62,7 +62,7 @@ jobs:
         cd %GITHUB_WORKSPACE%\public
         dnetc.com -test
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v6
       with:
         name: dnetc-artifact-win32
         path: public/dnetc*-win32-x86.zip
@@ -91,7 +91,7 @@ jobs:
         cd %GITHUB_WORKSPACE%\public
         dnetc.com -test
 
-    - uses: actions/upload-artifact@v4
+    - uses: actions/upload-artifact@v6
       with:
         name: dnetc-artifact-win64
         path: public/dnetc*-win*.zip
