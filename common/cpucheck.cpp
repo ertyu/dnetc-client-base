@@ -2814,14 +2814,13 @@ void GetProcessorInformationStrings( int device, const char ** scpuid, const cha
     strcat( namebuf, cpuid_s ); /* always valid */
 
     #define ADD_FEATURE_STRING(namebuf, char_count, featurebuf) \
-    ({ \
       if ( (char_count + strlen(featurebuf)) >= 80 ) { \
         strcat( namebuf, "\n\t          " ); \
         char_count = 10 + 10; \
        } \
        strcat( namebuf, featurebuf ); \
-       char_count += strlen(featurebuf); \
-    })
+       char_count += strlen(featurebuf);
+     
     int char_count = 0;
     strcat( namebuf, "\n\tfeatures: " );
     char_count += 10 + 10;
