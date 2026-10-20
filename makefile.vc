@@ -281,15 +281,15 @@ COMMON_OBJS =                        \
         $(OUTPUTPATH)/triggers.obj   \
         $(OUTPUTPATH)/util.obj
 
-!if $(HAVE_RC5_72_CORES) == 0
+!if $(HAVE_RC5_72_CORES) == 1
 COMMON_OBJS = $(COMMON_OBJS)         \
         $(OUTPUTPATH)/core_r72.obj
 !endif
-!if $(HAVE_OGR_CORES) == 0
+!if $(HAVE_OGR_CORES) == 1
 COMMON_OBJS = $(COMMON_OBJS)         \
         $(OUTPUTPATH)/core_ogr_ng.obj
 !endif
-!if $(HAVE_OGR_PASS2) == 0
+!if $(HAVE_OGR_PASS2) == 1
 COMMON_OBJS = $(COMMON_OBJS)         \
         $(OUTPUTPATH)/core_ogr.obj
 !endif
