@@ -217,6 +217,7 @@ return "@(#)$Id: netbase.cpp,v 1.23 2016/02/03 13:09:14 stream Exp $"; }
 
 // added OS_OPENBSD. grub 20020321
 #if (defined(__GLIBC__) && (__GLIBC__ >= 2)) \
+    || (CLIENT_OS == OS_ANDROID) \
     || (CLIENT_OS == OS_OPENBSD) \
     || (CLIENT_OS == OS_NETBSD) \
     || (CLIENT_OS == OS_DRAGONFLY) \
