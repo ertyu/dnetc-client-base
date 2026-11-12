@@ -44,6 +44,9 @@ jobs:
       
     - name: make
       run: make
+
+    - name: file
+      run: file dnetc
       
     - name: test
       run: ./dnetc -test
