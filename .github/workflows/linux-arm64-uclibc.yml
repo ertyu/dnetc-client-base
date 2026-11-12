@@ -31,7 +31,7 @@ jobs:
       working-directory: /tmp
       run: |
         wget https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64/tarballs/aarch64--uclibc--stable-2026.08-1.tar.xz
-        tar zxvf aarch64--uclibc--stable-2026.08-1.tar.xz
+        tar xvf aarch64--uclibc--stable-2026.08-1.tar.xz
         echo "/tmp/aarch64--uclibc--stable-2026.08-1/bin" >> $GITHUB_PATH
 
     - name: configure
