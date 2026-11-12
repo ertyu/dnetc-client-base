@@ -1699,14 +1699,35 @@ case "$1" in
         ;;
         
     *linux-arm64)               # [mikereed ertyu]
-        TARGET_CC="g++"
+        TARGET_CC="gcc"
         TARGET_AS="gcc -c"
-        TARGET_CCFLAGS="$OPTS_GCC -O3 -Wall -DHAVE_POSIX_THREADS"
+        generate_gcc_opts "arm64" "linux"
+        TARGET_CCFLAGS="$OPTS_GCC -DHAVE_POSIX_THREADS"
         TARGET_LIBS="-lpthread -lrt"
         TARGET_TARBALL="linux-arm64"
         TARGET_DOCFILES="docs/readme._ix"
         add_sources "linux" "arm64"
-        ;;
+
+    *linux-arm64-uclibc*)
+        ### From https://toolchains.bootlin.com
+        ### download aarch64 uclibc stable
+        ### and set the path/prefix accordingly below
+        # things that'll break cross-compile commented out
+        # put toolchain prefix here
+        cross_prefix="aarch64-linux-"
+        TARGET_IS_CROSSCOMPILE=1
+        TARGET_AS="${cross_prefix}gcc -c"
+        TARGET_CC="${cross_prefix}gcc"
+        TARGET_STRIP="${cross_prefix}strip"
+        generate_gcc_opts "arm64" "linux"
+        TARGET_CCFLAGS="$OPTS_GCC -DHAVE_POSIX_THREADS"
+        TARGET_LDFLAGS="$TARGET_LDFLAGS -static"
+        TARGET_LIBS="-lpthread -lrt"
+        TARGET_TARBALL="linux-arm64-uclibc"
+        TARGET_DOCFILES="docs/readme._ix docs/readme.uclib"   #platform specific docfile
+        TARGET_USES_GNUMAKE="yes"
+        add_sources "uclibc" "arm64"
+        ;;	
 
     *linux-ppc64)             # [sunset mikereed] 
         TARGET_CC="g++"             
