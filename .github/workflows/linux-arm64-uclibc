@@ -1,0 +1,59 @@
+name: linux-arm64-uclibc CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    timeout-minutes: 20
+    runs-on: ubuntu-latest
+
+#    defaults:
+#      run:
+#        working-directory: public
+
+    steps:
+    - uses: actions/checkout@v7
+#    - name: Check out repository code
+#      uses: actions/checkout@v7
+#    - name: Check out the public repository code
+#      uses: actions/checkout@v7
+#      with:
+#        repository: dcti/dnetc-client-base
+#        ref: master
+#        path: public
+
+    - name: Install uclibc toolchain
+      working-directory: /tmp
+      run: |
+        wget https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64/tarballs/aarch64--uclibc--stable-2026.08-1.tar.xz
+        tar xvjf aarch64--uclibc--stable-2026.08-1.tar.xz
+        echo "/tmp/aarch64--uclibc--stable-2026.08-1/bin" >> $GITHUB_PATH
+
+    - name: configure
+      run: ./configure linux-arm64-uclibc
+      
+    - name: make
+      run: make
+      
+    - name: test
+      run: ./dnetc -test
+    - name: bench
+      run: ./dnetc -bench
+#    - name: stress
+#      run: ./dnetc -stress
+    - name: cpuinfo
+      run: ./dnetc -cpuinfo
+    - name: cpu
+      run: lscpu
+
+#    - uses: actions/upload-artifact@v7
+#      with:
+#        name: dnetc-artifact.tar.gz
+#        path: public/dnetc*.tar.gz
+#        archive: false
+#        if-no-files-found: error
