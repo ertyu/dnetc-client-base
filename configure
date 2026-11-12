@@ -1722,7 +1722,7 @@ case "$1" in
         TARGET_STRIP="${cross_prefix}strip"
         generate_gcc_opts "arm64" "linux"
         TARGET_CCFLAGS="$OPTS_GCC -fPIE -DHAVE_POSIX_THREADS"
-        TARGET_LDFLAGS="$TARGET_LDFLAGS -static"
+        TARGET_LDFLAGS="$TARGET_LDFLAGS -static -fPIE"
         TARGET_LIBS="-lpthread -lrt"
         TARGET_TARBALL="linux-arm64-uclibc"
         TARGET_DOCFILES="docs/readme._ix docs/readme.uclib"   #platform specific docfile
