@@ -1707,6 +1707,7 @@ case "$1" in
         TARGET_TARBALL="linux-arm64"
         TARGET_DOCFILES="docs/readme._ix"
         add_sources "linux" "arm64"
+        ;;
 
     *linux-arm64-uclibc*)
         ### From https://toolchains.bootlin.com
