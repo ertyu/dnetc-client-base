@@ -55,8 +55,9 @@ jobs:
       run: ./dnetc -test
     - name: bench
       run: ./dnetc -bench
-#    - name: stress
-#      run: ./dnetc -stress
+    - name: stress
+      if: github.event_name == 'workflow_dispatch'
+      run: ./dnetc -stress
     - name: cpuinfo
       run: ./dnetc -cpuinfo
     - name: cpu
