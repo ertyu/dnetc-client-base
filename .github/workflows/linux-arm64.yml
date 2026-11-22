@@ -48,8 +48,8 @@ jobs:
     - name: file
       run: file dnetc
 
-    - name: ldd
-      run: ldd dnetc
+#    - name: ldd
+#      run: ldd dnetc
       
     - name: test
       run: ./dnetc -test
