@@ -1,4 +1,4 @@
-name: Linux arm64 CI
+name: linux-arm64 CI
 
 on:
   workflow_dispatch:
@@ -47,6 +47,9 @@ jobs:
 
     - name: file
       run: file dnetc
+
+    - name: ldd
+      run: ldd dnetc
       
     - name: test
       run: ./dnetc -test
